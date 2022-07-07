@@ -1,8 +1,6 @@
-@mixin home(){
-    width: 100px;
-    height: 100px;
-    @include themeify{
+@mixin home() {
+    @include themeify {
         background-color: themed('bg-color');
-        font-size: themed('font-size-lg')
+        font-size: themed('font-size-lg');
     }
 }

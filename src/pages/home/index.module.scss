@@ -1,6 +1,6 @@
-.Home{
+.Home {
     @include home();
-    @include themeify{
-     color: themed('font-color');
+    @include themeify {
+        color: themed('font-color');
     }
-  }
+}

@@ -10,10 +10,12 @@ const Locale = () => {
         setLanguage(e);
     };
     return (
-        <Select value={language} onChange={changeLanguage}>
-            <option value="zh">中</option>
-            <option value="en">英</option>
-        </Select>
+        <div>
+            <Select value={language} onChange={changeLanguage}>
+                <option value="zh">中</option>
+                <option value="en">英</option>
+            </Select>
+        </div>
     );
 };
 export default Locale;

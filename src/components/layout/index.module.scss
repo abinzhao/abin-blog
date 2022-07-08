@@ -2,10 +2,17 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100vw;
+    @include other();
+    @include themeify {
+        background-color: themed('bg-color');
+        color: themed('font-color');
+    }
 }
 .top {
     width: 100vw;
     height: 60px;
+    padding: 0 12px;
     line-height: 60px;
     position: fixed;
 }

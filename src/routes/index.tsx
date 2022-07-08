@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, useRoutes } from 'react-router-dom';
+import { useRoutes } from 'react-router-dom';
 import routers from './routers';
 
 const Router = () => {
@@ -8,11 +8,7 @@ const Router = () => {
         return routes;
     }
 
-    return (
-        <BrowserRouter>
-            <Routes />
-        </BrowserRouter>
-    );
+    return <Routes />;
 };
 
 export default Router;

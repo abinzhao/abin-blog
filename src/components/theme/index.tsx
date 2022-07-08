@@ -1,8 +1,15 @@
 import { Button } from 'antd';
-import React, { useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
+import { BgColorsOutlined } from '@ant-design/icons';
 
-const Theme = () => {
+interface Props {
+    icon?: ReactNode;
+    className?: string | undefined;
+    btnType?: 'default' | 'primary' | 'dashed' | undefined;
+}
+const Theme = (props: Props) => {
+    const { icon, className, btnType } = props;
     const [themeData, setThemeData] = useState<string>(
         Cookies.get('theme') || 'default',
     );
@@ -23,9 +30,13 @@ const Theme = () => {
             .setAttribute('data-theme', themes);
     }, [themeData]);
     return (
-        <Button type={'primary'} onClick={changeTheme}>
-            主题
-        </Button>
+        <Button
+            className={className || undefined}
+            onClick={changeTheme}
+            type={btnType || 'dashed'}
+            shape="circle"
+            icon={icon || <BgColorsOutlined />}
+        />
     );
 };
 export default Theme;

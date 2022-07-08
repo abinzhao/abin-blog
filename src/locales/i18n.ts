@@ -11,10 +11,13 @@ i18n.use(LanguageDetector)
     .init({
         resources,
         fallbackLng: 'zh',
-        lng: navigator.language,
+        // lng: navigator.language,
         debug: true,
         interpolation: {
             escapeValue: false, // not needed for react as it escapes by default
+        },
+        detection: {
+            caches: ['sessionStorage', 'cookie'],
         },
     });
 

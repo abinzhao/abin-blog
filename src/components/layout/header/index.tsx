@@ -1,23 +1,17 @@
-import Locale from '@/components/locale';
-import Theme from '@/components/theme';
-import { useViewport } from '@/utils/viewportContext';
+import Author from '@/components/author';
+import Nav from '@/components/nav';
 import React from 'react';
 import styles from './index.module.scss';
 
-const Header = (props: any) => {
-    const { width } = useViewport();
+const Header = () => {
+    const navlist = [
+        { label: '首页', icon: <>1</>, path: '/' },
+        { label: 'home', icon: <>1</>, path: '/home' },
+    ];
     return (
-        <div className={styles['header-ls']}>
-            <div className={styles.author}>
-                <img className={styles.img} src="" alt="author" />
-                <div className={styles.name}>名字</div>
-            </div>
-            <div className={styles.nav}>
-                <div>list</div>
-                <Theme />
-                <Locale />
-                <div className={styles.search}>搜索</div>
-            </div>
+        <div className={styles.header}>
+            <Author />
+            <Nav navList={navlist} isLocale isSearch isTheme />
         </div>
     );
 };

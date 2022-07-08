@@ -6,13 +6,16 @@ import 'antd/dist/antd.css';
 import '@/locales/i18n';
 import { Layout } from '@/components';
 import { ViewportProvider } from '@/utils/viewportContext';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <ViewportProvider>
-            <Layout>
-                <Router />
-            </Layout>
+            <BrowserRouter>
+                <Layout>
+                    <Router />
+                </Layout>
+            </BrowserRouter>
         </ViewportProvider>
     </React.StrictMode>,
 );

@@ -1,4 +1,4 @@
-@mixin home() {
+@mixin other() {
     @include themeify {
         background-color: themed('bg-color');
         font-size: themed('font-size-lg');

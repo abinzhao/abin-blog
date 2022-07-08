@@ -1,4 +1,8 @@
 {
+    "locale": "多语言",
+    "theme": "主题",
+    "search": "请输入您要搜索的文章",
+    "searchBtn": "搜索",
     "home": {
         "title": "首页",
         "content": "我是首页"

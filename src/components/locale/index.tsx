@@ -1,21 +1,37 @@
-import { Select } from 'antd';
-import React, { useState } from 'react';
+import { Button } from 'antd';
+import React, { ReactNode, useState } from 'react';
+import { TranslationOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
+import Cookies from 'js-cookie';
+import { RenderFunction } from 'antd/lib/tooltip';
 
-const Locale = () => {
+interface Props {
+    icon?: ReactNode;
+    className?: string | undefined;
+    tipTitle?: ReactNode | RenderFunction;
+    btnType?: 'default' | 'primary' | 'dashed' | undefined;
+}
+const Locale = (props: Props) => {
+    const { icon, className, btnType } = props;
     const { i18n } = useTranslation();
-    const [language, setLanguage] = useState('zh');
-    const changeLanguage = (e: string) => {
-        i18n.changeLanguage(e);
-        setLanguage(e);
+    const [language, setLanguage] = useState(Cookies.get('i18next') || 'zh');
+    const changeLanguage = () => {
+        if (language == 'en') {
+            i18n.changeLanguage('zh');
+            setLanguage('zh');
+            return;
+        }
+        i18n.changeLanguage('en');
+        setLanguage('en');
     };
     return (
-        <div>
-            <Select value={language} onChange={changeLanguage}>
-                <option value="zh">中</option>
-                <option value="en">英</option>
-            </Select>
-        </div>
+        <Button
+            className={className || undefined}
+            onClick={changeLanguage}
+            type={btnType || 'dashed'}
+            shape="circle"
+            icon={icon || <TranslationOutlined />}
+        />
     );
 };
 export default Locale;

@@ -19,8 +19,8 @@ const Home = () => {
             <div>Home/首页</div>
             多语言
             <Locale />
-            <div>{t('home.title')}</div>
-            <div>{t('home.content')}</div>
+            <div>{t('title')}</div>
+            <div>{t('content')}</div>
         </div>
     );
 };

@@ -1,6 +1,8 @@
 {
-    "home": {
-        "title": "home",
-        "content": "I am the home page"
-    }
+    "locale": "multi-language",
+    "theme": "themes",
+    "search": "Please enter the article you are searching for",
+    "searchBtn": "Search",
+    "title": "home",
+    "content": "I am the home page"
 }

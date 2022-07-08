@@ -9,7 +9,6 @@
     margin-right: 12px;
 }
 .name {
-    @include other();
     @include themeify {
         color: themed('author-font-color');
     }

@@ -40,5 +40,6 @@ module.exports = {
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         'no-constant-condition': ['error', { checkLoops: false }],
+        '@typescript-eslint/no-explicit-any': ['off'],
     },
 };

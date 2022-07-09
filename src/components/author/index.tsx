@@ -7,7 +7,7 @@ interface Props {
     imgStyle?: CSSProperties | undefined;
     nameStyle?: CSSProperties | undefined;
 }
-const Author = (props: Props) => {
+const Author: React.FC<Props> = (props: Props) => {
     const { url, imgStyle, nameStyle } = props;
     const default_url =
         'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201809%2F10%2F20180910171735_uqvbg.thumb.1000_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1659844403&t=f976cd8d6da498671bdd51b78176ca74';

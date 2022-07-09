@@ -8,7 +8,7 @@ interface Props {
     className?: string | undefined;
     btnType?: 'default' | 'primary' | 'dashed' | undefined;
 }
-const Theme = (props: Props) => {
+const Theme: React.FC<Props> = (props: Props) => {
     const { icon, className, btnType } = props;
     const [themeData, setThemeData] = useState<string>(
         Cookies.get('theme') || 'default',
@@ -24,6 +24,10 @@ const Theme = (props: Props) => {
         setThemeData('default');
     };
     useEffect(() => {
+        if (!Cookies.get('theme')) {
+            Cookies.set('theme', 'default');
+            setThemeData('default');
+        }
         const themes: string = Cookies.get('theme') || 'default';
         document
             .getElementsByTagName('body')[0]

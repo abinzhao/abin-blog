@@ -7,6 +7,7 @@ import '@/locales/i18n';
 import { Layout } from '@/components';
 import { ViewportProvider } from '@/utils/viewportContext';
 import { BrowserRouter } from 'react-router-dom';
+import '../mock/index';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>

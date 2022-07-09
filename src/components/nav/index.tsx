@@ -1,6 +1,5 @@
 import React, { ReactNode, useState } from 'react';
 import styles from './index.module.scss';
-import { useTranslation } from 'react-i18next';
 import Theme from '../theme';
 import Locale from '../locale';
 import { useViewport } from '@/utils/viewportContext';
@@ -21,12 +20,11 @@ interface List {
     icon?: ReactNode | string;
     path: string;
 }
-const Nav = (props: Props<List>) => {
+const Nav: React.FC<Props<List>> = (props: Props<List>) => {
     const { navList, isTheme, isLocale, isSearch } = props;
     const [openNav, setOpenNav] = useState<boolean>(false);
     const { width } = useViewport();
     const navigate = useNavigate();
-    const { t } = useTranslation();
     const defWidth = 620;
 
     return width > defWidth ? (

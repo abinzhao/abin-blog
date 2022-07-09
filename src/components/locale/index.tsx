@@ -11,7 +11,7 @@ interface Props {
     tipTitle?: ReactNode | RenderFunction;
     btnType?: 'default' | 'primary' | 'dashed' | undefined;
 }
-const Locale = (props: Props) => {
+const Locale: React.FC<Props> = (props: Props) => {
     const { icon, className, btnType } = props;
     const { i18n } = useTranslation();
     const [language, setLanguage] = useState(Cookies.get('i18next') || 'zh');

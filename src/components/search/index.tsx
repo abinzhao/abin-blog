@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Button, Modal, Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import Author from '../author';
+import ArticleItem from '../Item';
 
 const ModelSearch = Input.Search;
 
@@ -14,7 +15,7 @@ interface Props {
     onSearch?: (v: string) => void;
     loading?: boolean;
 }
-const Search = (props: Props) => {
+const Search: React.FC<Props> = (props: Props) => {
     const { className, btnType, icon, styleModal, loading } = props;
     const { t } = useTranslation();
     const [openSearch, setOpenSearch] = useState<boolean>(false);
@@ -22,7 +23,7 @@ const Search = (props: Props) => {
     const onSearch = (value: string) => props?.onSearch?.(value);
 
     return (
-        <div className={className || undefined}>
+        <>
             <Button
                 className={className || undefined}
                 type={btnType || 'dashed'}
@@ -46,11 +47,9 @@ const Search = (props: Props) => {
                     loading={loading || false}
                     allowClear
                 />
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
+                <ArticleItem />
             </Modal>
-        </div>
+        </>
     );
 };
 export default Search;

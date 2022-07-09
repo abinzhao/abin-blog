@@ -1,9 +1,12 @@
 import React, { ReactNode, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, Modal, Input } from 'antd';
+import { Button, Modal, Input, Empty } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import Author from '../author';
 import ArticleItem from '../Item';
+import { Article } from '@/service/index';
+import { useViewport } from '@/utils/viewportContext';
+import styles from './index.module.scss';
 
 const ModelSearch = Input.Search;
 
@@ -19,9 +22,17 @@ const Search: React.FC<Props> = (props: Props) => {
     const { className, btnType, icon, styleModal, loading } = props;
     const { t } = useTranslation();
     const [openSearch, setOpenSearch] = useState<boolean>(false);
+    const [SearchData, setSearchData] = useState<any[]>([]);
+    const { width } = useViewport();
+    const defWidth = 620;
 
-    const onSearch = (value: string) => props?.onSearch?.(value);
+    const onSearch = async (value: string) => {
+        props?.onSearch?.(value);
+        const res: any = await Article({ value });
+        setSearchData(res?.data?.data?.list);
+    };
 
+    console.log('SearchData', SearchData);
     return (
         <>
             <Button
@@ -37,7 +48,10 @@ const Search: React.FC<Props> = (props: Props) => {
                 style={{ minHeight: 300 }}
                 visible={openSearch}
                 footer={null}
-                onCancel={() => setOpenSearch(false)}
+                onCancel={() => {
+                    setOpenSearch(false);
+                    setSearchData([]);
+                }}
             >
                 <ModelSearch
                     placeholder={t('search')}
@@ -47,7 +61,18 @@ const Search: React.FC<Props> = (props: Props) => {
                     loading={loading || false}
                     allowClear
                 />
-                <ArticleItem />
+                <div
+                    className={styles.itemContent}
+                    style={{ maxHeight: width > defWidth ? 300 : 400 }}
+                >
+                    {SearchData?.length <= 0 ? (
+                        <Empty style={{ margin: '20px 0' }} />
+                    ) : (
+                        SearchData?.map((item, i) => (
+                            <ArticleItem key={`item-${i}`} />
+                        ))
+                    )}
+                </div>
             </Modal>
         </>
     );

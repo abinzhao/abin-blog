@@ -1,4 +1,8 @@
-import * as login from './module/login';
-import * as config from './module/config';
+import { request } from '@/utils/axios/axios';
 
-export default Object.assign({}, login, config);
+export const config = (params: any) => {
+    return request('/api/abin/blog/config', params, 'GET');
+};
+export const Article = (params: any) => {
+    return request('/api/abin/blog/search', params, 'POST');
+};

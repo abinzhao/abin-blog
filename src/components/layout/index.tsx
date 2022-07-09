@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import Footer from './footer';
 import Header from './header';
 import styles from './index.module.scss';
 
-const Layout: React.FC = (props: any) => {
+interface Props {
+    children?: ReactNode;
+}
+const Layout: React.FC<Props> = (props: Props) => {
     return (
         <div className={styles.layout}>
             <div className={styles.top}>

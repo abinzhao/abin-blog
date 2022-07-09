@@ -3,7 +3,7 @@ import Nav from '@/components/nav';
 import React from 'react';
 import styles from './index.module.scss';
 
-const Header: React.FC = () => {
+const Header: React.FC = (props) => {
     const navlist = [
         { label: '首页', icon: <>1</>, path: '/' },
         { label: 'home', icon: <>1</>, path: '/home' },

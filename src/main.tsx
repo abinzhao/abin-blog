@@ -8,15 +8,18 @@ import { Layout } from '@/components';
 import { ViewportProvider } from '@/utils/viewportContext';
 import { BrowserRouter } from 'react-router-dom';
 import '../mock/index';
+import { ConfigContextProvider } from './utils/configContext';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <ViewportProvider>
-            <BrowserRouter>
-                <Layout>
-                    <Router />
-                </Layout>
-            </BrowserRouter>
-        </ViewportProvider>
+        <ConfigContextProvider>
+            <ViewportProvider>
+                <BrowserRouter>
+                    <Layout>
+                        <Router />
+                    </Layout>
+                </BrowserRouter>
+            </ViewportProvider>
+        </ConfigContextProvider>
     </React.StrictMode>,
 );

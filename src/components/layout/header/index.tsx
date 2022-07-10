@@ -1,17 +1,26 @@
 import Author from '@/components/author';
 import Nav from '@/components/nav';
+import { useConfig } from '@/utils/configContext';
 import React from 'react';
 import styles from './index.module.scss';
 
-const Header: React.FC = (props) => {
-    const navlist = [
-        { label: '首页', icon: <>1</>, path: '/' },
-        { label: 'home', icon: <>1</>, path: '/home' },
-    ];
+const Header: React.FC = () => {
+    const configContent = useConfig();
+    const authorData = {
+        name: configContent?.data?.name,
+        authorUrl: configContent?.data?.author_url,
+        authorImage: configContent?.data?.author_image,
+    };
     return (
         <div className={styles.header}>
-            <Author />
-            <Nav navList={navlist} isLocale isSearch isTheme />
+            <Author authorData={authorData} />
+            <Nav
+                navList={configContent?.data?.navList}
+                authorData={authorData}
+                isLocale
+                isSearch
+                isTheme
+            />
         </div>
     );
 };

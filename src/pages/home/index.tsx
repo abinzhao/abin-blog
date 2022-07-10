@@ -4,7 +4,6 @@ import styles from './index.module.scss';
 import { Theme, Locale } from '@/components';
 import { useTranslation } from 'react-i18next';
 import { config } from '@/service/index';
-// import API from '@/service';
 
 const Home = () => {
     const { t } = useTranslation();

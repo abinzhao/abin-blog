@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './index.module.scss';
 import Theme from '../theme';
 import Locale from '../locale';
@@ -8,20 +8,40 @@ import { Link, useNavigate } from 'react-router-dom';
 import { BarsOutlined, BranchesOutlined } from '@ant-design/icons';
 import Author from '../author';
 import Search from '../search';
+import { iconList } from './icon';
 
-interface Props<P> {
+interface Props<P, T> {
     navList: P[];
+    authorData?: T;
     isTheme?: boolean;
     isLocale?: boolean;
     isSearch?: boolean;
 }
 interface List {
     label: string;
-    icon?: ReactNode | string;
+    icon?: string;
     path: string;
 }
-const Nav: React.FC<Props<List>> = (props: Props<List>) => {
-    const { navList, isTheme, isLocale, isSearch } = props;
+
+interface AuthorProps {
+    name: string;
+    authorUrl: string;
+    authorImage: string | undefined;
+}
+const Nav: React.FC<Props<List, AuthorProps>> = (
+    props: Props<List, AuthorProps>,
+) => {
+    const {
+        navList = [],
+        isTheme = false,
+        isLocale = false,
+        isSearch = false,
+        authorData = {
+            name: '',
+            authorUrl: '',
+            authorImage: undefined,
+        },
+    } = props;
     const [openNav, setOpenNav] = useState<boolean>(false);
     const { width } = useViewport();
     const navigate = useNavigate();
@@ -30,7 +50,7 @@ const Nav: React.FC<Props<List>> = (props: Props<List>) => {
     return width > defWidth ? (
         <div className={styles.nav}>
             <div className={styles.navList}>
-                {navList?.map((item, i) => {
+                {navList?.map((item: any, i: number) => {
                     return (
                         <Button
                             key={`nav-${i}`}
@@ -58,7 +78,7 @@ const Nav: React.FC<Props<List>> = (props: Props<List>) => {
                 onClick={() => setOpenNav(!openNav)}
             ></Button>
             <Drawer
-                title={<Author />}
+                title={<Author authorData={authorData} />}
                 placement="left"
                 width={300}
                 onClose={() => setOpenNav(false)}
@@ -72,7 +92,7 @@ const Nav: React.FC<Props<List>> = (props: Props<List>) => {
                             <List.Item.Meta
                                 avatar={
                                     item?.icon ? (
-                                        item?.icon
+                                        iconList[item?.icon]
                                     ) : (
                                         <BranchesOutlined />
                                     )

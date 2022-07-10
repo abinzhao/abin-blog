@@ -31,8 +31,6 @@ const Search: React.FC<Props> = (props: Props) => {
         const res: any = await Article({ value });
         setSearchData(res?.data?.data?.list);
     };
-
-    console.log('SearchData', SearchData);
     return (
         <>
             <Button

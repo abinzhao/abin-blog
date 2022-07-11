@@ -7,6 +7,7 @@ import ArticleItem from '../Item';
 import { Article } from '@/service/index';
 import { useViewport } from '@/utils/viewportContext';
 import styles from './index.module.scss';
+import { useConfig } from '@/utils/configContext';
 
 const ModelSearch = Input.Search;
 
@@ -18,6 +19,12 @@ interface Props {
     onSearch?: (v: string) => void;
     loading?: boolean;
 }
+
+interface aythorProps {
+    name: string;
+    authorUrl: string;
+    authorImage: string;
+}
 const Search: React.FC<Props> = (props: Props) => {
     const { className, btnType, icon, styleModal, loading } = props;
     const { t } = useTranslation();
@@ -25,6 +32,13 @@ const Search: React.FC<Props> = (props: Props) => {
     const [SearchData, setSearchData] = useState<any[]>([]);
     const { width } = useViewport();
     const defWidth = 620;
+
+    const configContent = useConfig();
+    const authorData: aythorProps = {
+        name: configContent?.data?.name,
+        authorUrl: configContent?.data?.author_url,
+        authorImage: configContent?.data?.author_image,
+    };
 
     const onSearch = async (value: string) => {
         props?.onSearch?.(value);
@@ -41,7 +55,7 @@ const Search: React.FC<Props> = (props: Props) => {
                 onClick={() => setOpenSearch(!openSearch)}
             />
             <Modal
-                title={<Author />}
+                title={<Author authorData={authorData} />}
                 className={styleModal || undefined}
                 style={{ minHeight: 300 }}
                 visible={openSearch}

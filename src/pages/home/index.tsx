@@ -1,23 +1,27 @@
 import React from 'react';
 // import { useParams, useSearchParams, useLocation } from 'react-router-dom';
 import styles from './index.module.scss';
-import { Theme, Locale } from '@/components';
 import { useTranslation } from 'react-i18next';
-import { config } from '@/service/index';
+import { Header } from './component';
 
 const Home = () => {
     const { t } = useTranslation();
-    // console.log(useSearchParams(), useLocation(), useParams(), request);
-    config({}).then((res) => {
-        console.log(res);
-    });
 
     return (
         <div className={styles.Home}>
-            <Theme />
-            <div>Home/首页</div>
+            <Header
+                title="老忘同学"
+                subTitle="bb"
+                btnList={[]}
+                imageList={[]}
+            />
+            <div className="animate__animated animate__fadeInTopLeft">
+                Home/首页
+            </div>
+            <h1 className="animate__animated animate__backInUp">
+                An animated element
+            </h1>
             多语言
-            <Locale />
             <div>{t('title')}</div>
             <div>{t('content')}</div>
         </div>

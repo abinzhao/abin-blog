@@ -4,5 +4,10 @@
     "search": "Please enter the article you are searching for",
     "searchBtn": "Search",
     "title": "home",
-    "content": "I am the home page"
+    "content": "I am the home page",
+    "home": {
+        "header": {
+            "title": "Hello! I am"
+        }
+    }
 }

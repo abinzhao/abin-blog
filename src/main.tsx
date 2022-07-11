@@ -9,6 +9,7 @@ import { ViewportProvider } from '@/utils/viewportContext';
 import { BrowserRouter } from 'react-router-dom';
 import '../mock/index';
 import { ConfigContextProvider } from './utils/configContext';
+import 'animate.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>

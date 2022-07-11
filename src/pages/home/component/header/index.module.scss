@@ -1,0 +1,22 @@
+.header {
+    width: 100vw;
+    display: flex;
+}
+.left {
+    width: 50vw;
+}
+.title {
+    font-size: 48px;
+    font-weight: bold;
+    display: flex;
+}
+.subTitle {
+    font-size: 24px;
+    margin: 50px 0 20px 0;
+}
+.name {
+    color: cornflowerblue;
+}
+.right {
+    width: 50vw;
+}

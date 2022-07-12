@@ -2,26 +2,21 @@ import { useViewport } from '@/utils/viewportContext';
 import { useTranslation } from 'react-i18next';
 import React from 'react';
 import styles from './index.module.scss';
+import HomeImage from '@/assets/image/home.svg';
+import { iconList } from '@/components/nav/icon';
 
-interface Props<P, T> {
+interface Props<P> {
     btnList?: P[];
     title: string;
     subTitle: string;
-    imageList: T[];
+    content?: string;
 }
 interface btnlist {
     icon: string;
     path: string;
 }
-interface ImageProps {
-    imageUrl: string;
-    title: string;
-    id: number | string;
-}
-const Header: React.FC<Props<btnlist, ImageProps>> = (
-    props: Props<btnlist, ImageProps>,
-) => {
-    const { btnList = [], title = '', subTitle = '', imageList = [] } = props;
+const Header: React.FC<Props<btnlist>> = (props: Props<btnlist>) => {
+    const { btnList = [], title = '', subTitle = '', content = '' } = props;
     const { width } = useViewport();
     const { t } = useTranslation();
     const defWidth = 620;
@@ -35,13 +30,29 @@ const Header: React.FC<Props<btnlist, ImageProps>> = (
                             <div className={styles.name}>{title}</div>
                         </div>
                         <div className={styles.subTitle}>{subTitle}</div>
+                        <div className={styles.content}>{content}</div>
+                        <div className={styles.btnlist}>
+                            {btnList?.map((item) => (
+                                <a
+                                    className={styles.btnLink}
+                                    key={`btn-${item?.icon}`}
+                                    href={item?.path}
+                                >
+                                    {iconList[item?.icon]}
+                                </a>
+                            ))}
+                        </div>
                     </div>
-                    <div className={styles.reght}>
-                        <div>哈喽</div>
+                    <div className={styles.right}>
+                        <img
+                            className={styles.leftImage}
+                            src={HomeImage}
+                            alt="Home LOGO"
+                        />
                     </div>
                 </>
             ) : (
-                <></>
+                <>123</>
             )}
         </div>
     );

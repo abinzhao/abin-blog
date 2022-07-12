@@ -22,5 +22,6 @@
     },
     "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx"],
     "references": [{ "path": "./tsconfig.node.json" }],
-    "exclude": ["node_modules/**/*"]
+    "suppressImplicitAnyIndexErrors": true,
+    "exclude": ["node_modules/**/*"],
 }

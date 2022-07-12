@@ -11,9 +11,12 @@ const Home = () => {
         <div className={styles.Home}>
             <Header
                 title="老忘同学"
-                subTitle="bb"
-                btnList={[]}
-                imageList={[]}
+                subTitle="做事有始有终值得开始的事就值得完成。聪明人做事总是有始有终!把意念深潜得下，何理不可得，把志气奋发起，何事不可做。"
+                content="前端工程师"
+                btnList={[
+                    { icon: 'home', path: 'ws' },
+                    { icon: 'home', path: 'ws' },
+                ]}
             />
             <div className="animate__animated animate__fadeInTopLeft">
                 Home/首页

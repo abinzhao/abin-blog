@@ -1,8 +1,9 @@
+body {
+    color: 'var(--semi-color-text-0)';
+    background-color: 'var( --semi-color-bg-0)';
+}
 body,
 div {
-    margin: 0;
-    padding: 0;
-
     font-family: Roboto, Verdana, 'Raleway', 'PingFang SC', 'Microsoft Yahei',
         sans-serif;
     -webkit-font-smoothing: antialiased;

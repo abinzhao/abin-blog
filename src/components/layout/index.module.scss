@@ -4,10 +4,6 @@
     height: 100%;
     width: 100vw;
     @include other();
-    @include themeify {
-        background-color: themed('bg-color');
-        color: themed('font-color');
-    }
 }
 .top {
     width: 100vw;

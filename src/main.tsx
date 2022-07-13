@@ -10,6 +10,7 @@ import { BrowserRouter } from 'react-router-dom';
 import '../mock/index';
 import { ConfigContextProvider } from './utils/configContext';
 import 'animate.css';
+import 'reset-css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>

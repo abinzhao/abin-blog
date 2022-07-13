@@ -9,9 +9,6 @@
     margin-right: 12px;
 }
 .name {
-    @include themeify {
-        color: themed('author-font-color');
-    }
     font-weight: bold;
     font-size: 16px;
 }

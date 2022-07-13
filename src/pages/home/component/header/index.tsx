@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import React from 'react';
 import styles from './index.module.scss';
 import HomeImage from '@/assets/image/home.svg';
-import { iconList } from '@/components/nav/icon';
+import { iconList } from '@/components/icon';
 
 interface Props<P> {
     btnList?: P[];

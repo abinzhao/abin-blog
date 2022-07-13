@@ -1,18 +1,17 @@
-import { Button } from 'antd';
 import React, { ReactNode, useState } from 'react';
-import { TranslationOutlined } from '@ant-design/icons';
+import { Button } from '@douyinfe/semi-ui';
+import { IconLanguage } from '@douyinfe/semi-icons';
 import { useTranslation } from 'react-i18next';
 import Cookies from 'js-cookie';
-import { RenderFunction } from 'antd/lib/tooltip';
 
 interface Props {
     icon?: ReactNode;
+    isRadius?: boolean;
     className?: string | undefined;
-    tipTitle?: ReactNode | RenderFunction;
-    btnType?: 'default' | 'primary' | 'dashed' | undefined;
+    btnType?: 'warning' | 'primary' | 'secondary' | 'danger' | undefined;
 }
 const Locale: React.FC<Props> = (props: Props) => {
-    const { icon, className, btnType } = props;
+    const { icon, className, btnType, isRadius } = props;
     const { i18n } = useTranslation();
     const [language, setLanguage] = useState(Cookies.get('i18next') || 'zh');
     const changeLanguage = () => {
@@ -26,11 +25,14 @@ const Locale: React.FC<Props> = (props: Props) => {
     };
     return (
         <Button
+            type={btnType || 'primary'}
             className={className || undefined}
+            style={{
+                borderRadius: isRadius ? '50%' : undefined,
+            }}
+            icon={icon || <IconLanguage />}
             onClick={changeLanguage}
-            type={btnType || 'dashed'}
-            shape="circle"
-            icon={icon || <TranslationOutlined />}
+            aria-label="多语言"
         />
     );
 };

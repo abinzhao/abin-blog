@@ -1,45 +1,49 @@
-import { Button } from 'antd';
 import React, { ReactNode, useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
-import { BgColorsOutlined } from '@ant-design/icons';
+import { Button } from '@douyinfe/semi-ui';
+import { IconMoon } from '@douyinfe/semi-icons';
 
 interface Props {
     icon?: ReactNode;
+    isRadius?: boolean;
     className?: string | undefined;
-    btnType?: 'default' | 'primary' | 'dashed' | undefined;
+    btnType?: 'warning' | 'primary' | 'secondary' | 'danger' | undefined;
 }
 const Theme: React.FC<Props> = (props: Props) => {
-    const { icon, className, btnType } = props;
+    const { icon, className, btnType, isRadius } = props;
     const [themeData, setThemeData] = useState<string>(
         Cookies.get('theme') || 'default',
     );
     const changeTheme = (): void => {
         console.log('Cookies', Cookies.get('theme'));
-        if (Cookies.get('theme') == 'default') {
+        if (Cookies.get('theme') == 'theme-mode') {
             Cookies.set('theme', 'dark');
             setThemeData('dark');
             return;
         }
-        Cookies.set('theme', 'default');
-        setThemeData('default');
+        Cookies.set('theme', 'theme-mode');
+        setThemeData('theme-mode');
     };
     useEffect(() => {
         if (!Cookies.get('theme')) {
-            Cookies.set('theme', 'default');
-            setThemeData('default');
+            Cookies.set('theme', 'theme-mode');
+            setThemeData('theme-mode');
         }
-        const themes: string = Cookies.get('theme') || 'default';
+        const themes: string = Cookies.get('theme') || 'theme-mode';
         document
             .getElementsByTagName('body')[0]
-            .setAttribute('data-theme', themes);
+            .setAttribute('theme-mode', themes);
     }, [themeData]);
     return (
         <Button
+            type={btnType || 'primary'}
             className={className || undefined}
+            style={{
+                borderRadius: isRadius ? '50%' : undefined,
+            }}
+            icon={icon || <IconMoon />}
             onClick={changeTheme}
-            type={btnType || 'dashed'}
-            shape="circle"
-            icon={icon || <BgColorsOutlined />}
+            aria-label="主题"
         />
     );
 };

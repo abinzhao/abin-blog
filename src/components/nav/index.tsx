@@ -3,12 +3,12 @@ import styles from './index.module.scss';
 import Theme from '../theme';
 import Locale from '../locale';
 import { useViewport } from '@/utils/viewportContext';
-import { Button, Drawer, List } from 'antd';
-import { Link, useNavigate } from 'react-router-dom';
-import { BarsOutlined, BranchesOutlined } from '@ant-design/icons';
+import { SideSheet, Button, List } from '@douyinfe/semi-ui';
+import { useNavigate } from 'react-router-dom';
+import { IconMenu } from '@douyinfe/semi-icons';
 import Author from '../author';
 import Search from '../search';
-import { iconList } from './icon';
+import { iconList } from '../icon';
 
 interface Props<P, T> {
     navList: P[];
@@ -17,7 +17,7 @@ interface Props<P, T> {
     isLocale?: boolean;
     isSearch?: boolean;
 }
-interface List {
+interface list {
     label: string;
     icon?: string;
     path: string;
@@ -28,8 +28,8 @@ interface AuthorProps {
     authorUrl: string;
     authorImage: string | undefined;
 }
-const Nav: React.FC<Props<List, AuthorProps>> = (
-    props: Props<List, AuthorProps>,
+const Nav: React.FC<Props<list, AuthorProps>> = (
+    props: Props<list, AuthorProps>,
 ) => {
     const {
         navList = [],
@@ -54,62 +54,58 @@ const Nav: React.FC<Props<List, AuthorProps>> = (
                     return (
                         <Button
                             key={`nav-${i}`}
-                            type={'link'}
                             onClick={() => navigate(item.path)}
-                            style={{ padding: '4px 10px 4px 4px' }}
+                            theme="borderless"
+                            type="primary"
+                            style={{ marginRight: 12 }}
                         >
                             {item?.label}
                         </Button>
                     );
                 })}
             </div>
-            {isTheme && <Theme className={styles.margin} />}
-            {isLocale && <Locale className={styles.margin} />}
-            {isSearch && <Search />}
+            {isTheme && <Theme className={styles.margin} isRadius />}
+            {isLocale && <Locale className={styles.margin} isRadius />}
+            {isSearch && <Search isRadius />}
         </div>
     ) : (
         <div className={styles.nav}>
-            {isSearch && <Search className={styles.margin} />}
-            {isTheme && <Theme className={styles.margin} />}
-            {isLocale && <Locale className={styles.margin} />}
+            {isSearch && <Search className={styles.margin} isRadius />}
+            {isTheme && <Theme className={styles.margin} isRadius />}
+            {isLocale && <Locale className={styles.margin} isRadius />}
             <Button
-                type={'text'}
-                icon={<BarsOutlined />}
+                type={'primary'}
+                style={{
+                    borderRadius: '50%',
+                }}
+                icon={<IconMenu />}
                 onClick={() => setOpenNav(!openNav)}
-            ></Button>
-            <Drawer
+                aria-label="搜索"
+            />
+            <SideSheet
                 title={<Author authorData={authorData} />}
                 placement="left"
                 width={300}
-                onClose={() => setOpenNav(false)}
+                onCancel={() => setOpenNav(false)}
                 visible={openNav}
             >
                 <List
-                    itemLayout="horizontal"
+                    size="large"
                     dataSource={navList}
                     renderItem={(item) => (
-                        <List.Item>
-                            <List.Item.Meta
-                                avatar={
-                                    item?.icon ? (
-                                        iconList[item?.icon]
-                                    ) : (
-                                        <BranchesOutlined />
-                                    )
-                                }
-                                title={
-                                    <Link
-                                        to={item?.path}
-                                        onClick={() => setOpenNav(false)}
-                                    >
-                                        {item.label}
-                                    </Link>
-                                }
-                            />
+                        <List.Item
+                            style={{ color: 'var(--semi-color-text-2)' }}
+                            onClick={() => {
+                                navigate(item?.path);
+                                setOpenNav(false);
+                            }}
+                        >
+                            {iconList[item?.icon || '']}
+                            <div style={{ marginLeft: 10 }}>{item?.label}</div>
                         </List.Item>
                     )}
                 />
-            </Drawer>
+            </SideSheet>
         </div>
     );
 };

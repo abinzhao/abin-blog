@@ -4,6 +4,8 @@ import React from 'react';
 import styles from './index.module.scss';
 import HomeImage from '@/assets/image/home.svg';
 import { iconList } from '@/components/icon';
+import { Button } from '@douyinfe/semi-ui';
+import { IconGithubLogo, IconSidebar } from '@douyinfe/semi-icons';
 
 interface Props<P> {
     btnList?: P[];
@@ -20,40 +22,78 @@ const Header: React.FC<Props<btnlist>> = (props: Props<btnlist>) => {
     const { width } = useViewport();
     const { t } = useTranslation();
     const defWidth = 620;
-    return (
+    return width > defWidth ? (
         <div className={styles.header}>
-            {width > defWidth ? (
-                <>
-                    <div className={styles.left}>
-                        <div className={styles.title}>
-                            <div>{t('home.header.title')}</div>
-                            <div className={styles.name}>{title}</div>
-                        </div>
-                        <div className={styles.subTitle}>{subTitle}</div>
-                        <div className={styles.content}>{content}</div>
-                        <div className={styles.btnlist}>
-                            {btnList?.map((item) => (
-                                <a
-                                    className={styles.btnLink}
-                                    key={`btn-${item?.icon}`}
-                                    href={item?.path}
-                                >
-                                    {iconList[item?.icon]}
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-                    <div className={styles.right}>
-                        <img
-                            className={styles.leftImage}
-                            src={HomeImage}
-                            alt="Home LOGO"
-                        />
-                    </div>
-                </>
-            ) : (
-                <>123</>
-            )}
+            <div className={styles.left}>
+                <div className={styles.title}>
+                    {t('home.header.title')}
+                    <span className={styles.name}>{title}</span>
+                </div>
+                <div className={styles.subTitle}>{subTitle}</div>
+                <div className={styles.content}>{content}</div>
+                <div style={{ marginTop: width > 1200 ? 52 : 12 }}>
+                    {btnList?.map((item) => (
+                        <a
+                            className={styles.btnLink}
+                            key={`btn-${item?.icon}`}
+                            href={item?.path}
+                        >
+                            {iconList[item?.icon]}
+                        </a>
+                    ))}
+                </div>
+                <div style={{ marginTop: width > 1200 ? 52 : 12 }}>
+                    <Button
+                        icon={<IconGithubLogo />}
+                        theme="solid"
+                        style={{ marginRight: 12 }}
+                    >
+                        前往GitHub
+                    </Button>
+                    <Button icon={<IconSidebar />} theme="solid">
+                        前往掘金
+                    </Button>
+                </div>
+            </div>
+            <div className={styles.right}>
+                <img
+                    className={styles.leftImage}
+                    src={HomeImage}
+                    alt="Home Header LOGO"
+                />
+            </div>
+        </div>
+    ) : (
+        <div className={styles.headerLS}>
+            <div className={styles.title}>
+                {t('home.header.title')}
+                <span className={styles.name}>{title}</span>
+            </div>
+            <div className={styles.subTitle}>{subTitle}</div>
+            <div className={styles.content}>{content}</div>
+            <div style={{ marginTop: 12 }}>
+                {btnList?.map((item) => (
+                    <a
+                        className={styles.btnLink}
+                        key={`btn-${item?.icon}`}
+                        href={item?.path}
+                    >
+                        {iconList[item?.icon]}
+                    </a>
+                ))}
+            </div>
+            <div style={{ marginTop: 12 }}>
+                <Button
+                    icon={<IconGithubLogo />}
+                    theme="solid"
+                    style={{ marginRight: 12 }}
+                >
+                    前往GitHub
+                </Button>
+                <Button icon={<IconSidebar />} theme="solid">
+                    前往掘金
+                </Button>
+            </div>
         </div>
     );
 };

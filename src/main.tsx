@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.scss';
 import Router from './routes';
 import '@/locales/i18n';
 import { Layout } from '@/components';
@@ -9,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 import '../mock/index';
 import { ConfigContextProvider } from './utils/configContext';
 import 'animate.css';
-import 'reset-css';
+import './index.scss';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>

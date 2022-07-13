@@ -4,11 +4,15 @@ $themes: (
         bg-color: #fff,
         font-color: #000,
         author-font-color: rgb(30, 128, 255),
+        header-bg-color:#71b7fd,
+        header-bg-color-defult:#fff,
     ),
     dark: (
         font-size-lg: 14px,
         bg-color: #000,
         font-color: #fff,
         author-font-color: rgb(30, 128, 255),
+        header-bg-color:#2c4052,
+        header-bg-color-defult:#000,
     ),
 );

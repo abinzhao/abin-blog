@@ -15,7 +15,7 @@ const Home = () => {
                 content="前端工程师"
                 btnList={[
                     { icon: 'home', path: 'ws' },
-                    { icon: 'home', path: 'ws' },
+                    { icon: 'github', path: 'ws' },
                 ]}
             />
             <div className="animate__animated animate__fadeInTopLeft">

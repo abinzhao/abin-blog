@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import Footer from './footer';
 import Header from './header';
 import styles from './index.module.scss';
@@ -6,7 +6,17 @@ import styles from './index.module.scss';
 interface Props {
     children?: ReactNode;
 }
+
 const Layout: React.FC<Props> = (props: Props) => {
+    const [scrollTop, setScrollTop] = useState<any>(0);
+    const handleScroll = () => {
+        const scrollTop =
+            document.documentElement.scrollTop || document.body.scrollTop;
+        setScrollTop(scrollTop);
+        return scrollTop;
+    };
+    window.addEventListener('scroll', handleScroll);
+
     return (
         <div
             className={styles.layout}
@@ -15,10 +25,16 @@ const Layout: React.FC<Props> = (props: Props) => {
                 backgroundColor: 'var( --semi-color-bg-0)',
             }}
         >
-            <div className={styles.top}>
+            <div
+                className={`${styles.top} ${
+                    scrollTop > 0 ? styles.headerBg : styles.headerBgDef
+                }`}
+            >
                 <Header />
             </div>
-            <div className={styles.center}>{props?.children}</div>
+            <div id="center" className={styles.center}>
+                {props?.children}
+            </div>
             <div className={styles.footer}>
                 <Footer />
             </div>

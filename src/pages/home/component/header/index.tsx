@@ -6,6 +6,7 @@ import HomeImage from '@/assets/image/home.svg';
 import { iconList } from '@/components/icon';
 import { Button } from '@douyinfe/semi-ui';
 import { IconGithubLogo, IconSidebar } from '@douyinfe/semi-icons';
+import { useNavigate } from 'react-router-dom';
 
 interface Props<P> {
     btnList?: P[];
@@ -21,6 +22,7 @@ const Header: React.FC<Props<btnlist>> = (props: Props<btnlist>) => {
     const { btnList = [], title = '', subTitle = '', content = '' } = props;
     const { width } = useViewport();
     const { t } = useTranslation();
+    const navigate = useNavigate();
     const defWidth = 620;
     return width > defWidth ? (
         <div className={styles.header}>
@@ -31,22 +33,30 @@ const Header: React.FC<Props<btnlist>> = (props: Props<btnlist>) => {
                 </div>
                 <div className={styles.subTitle}>{subTitle}</div>
                 <div className={styles.content}>{content}</div>
-                <div style={{ marginTop: width > 1200 ? 52 : 12 }}>
+                <div
+                    style={{
+                        marginTop: width > 1200 ? 52 : 12,
+                        display: 'flex',
+                    }}
+                >
                     {btnList?.map((item, i) => (
-                        <a
-                            className={styles.btnLink}
+                        <div
                             key={`header-btn-${item?.icon}-${i}`}
-                            href={item?.path}
+                            onClick={() => navigate(item?.path)}
+                            style={{
+                                marginRight: i == btnList?.length - 1 ? 0 : 12,
+                                color: '#0077fa',
+                            }}
                         >
                             {iconList[item?.icon]}
-                        </a>
+                        </div>
                     ))}
                 </div>
                 <div style={{ marginTop: width > 1200 ? 52 : 12 }}>
                     <Button
                         icon={<IconGithubLogo />}
                         theme="solid"
-                        style={{ marginRight: 12 }}
+                        style={{ marginRight: 24 }}
                     >
                         前往GitHub
                     </Button>
@@ -71,15 +81,18 @@ const Header: React.FC<Props<btnlist>> = (props: Props<btnlist>) => {
             </div>
             <div className={styles.subTitle}>{subTitle}</div>
             <div className={styles.content}>{content}</div>
-            <div style={{ marginTop: 12 }}>
+            <div style={{ marginTop: 12, display: 'flex' }}>
                 {btnList?.map((item, i) => (
-                    <a
-                        className={styles.btnLink}
-                        key={`header-ls-btn-${item?.icon}-${i}`}
-                        href={item?.path}
+                    <div
+                        key={`header-btn-ls-${item?.icon}-${i}`}
+                        onClick={() => navigate(item?.path)}
+                        style={{
+                            marginRight: i == btnList?.length - 1 ? 0 : 12,
+                            color: '#0077fa',
+                        }}
                     >
                         {iconList[item?.icon]}
-                    </a>
+                    </div>
                 ))}
             </div>
             <div style={{ marginTop: 12 }}>

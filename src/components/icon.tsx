@@ -13,10 +13,10 @@ interface iconProps {
 }
 
 export const iconList: iconProps = {
-    home: <IconHome />,
-    blog: <IconArticle />,
-    image: <IconImage />,
-    github: <IconGithubLogo />,
-    video: <IconUserCardVideo />,
-    weibo: <IconWeibo />,
+    home: <IconHome size={'extra-large'} />,
+    blog: <IconArticle size={'extra-large'} />,
+    image: <IconImage size={'extra-large'} />,
+    github: <IconGithubLogo size={'extra-large'} />,
+    video: <IconUserCardVideo size={'extra-large'} />,
+    weibo: <IconWeibo size={'extra-large'} />,
 };

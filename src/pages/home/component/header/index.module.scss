@@ -19,7 +19,7 @@
 .subTitle {
     margin: 50px 0 20px 0;
     color: #637792;
-    font-size: calc(0.7em + 1vw);
+    font-size: calc(0.7em + 0.7vw);
     letter-spacing: -0.04em;
     line-height: 32px;
     margin: 10px 0;
@@ -27,15 +27,9 @@
 }
 .content {
     color: #637792;
-    font-size: calc(0.7em + 1vw);
+    font-size: calc(0.7em + 0.7vw);
     letter-spacing: -0.04em;
-    line-height: 32px;
-    text-align: justify;
 }
-.btnLink {
-    margin-right: 12px;
-}
-
 .right {
     width: 50%;
 }

@@ -1,3 +1,4 @@
+import { Typography } from '@douyinfe/semi-ui';
 import React, { CSSProperties } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './index.module.scss';
@@ -12,6 +13,7 @@ interface AuthorProps {
     authorUrl: string;
     authorImage: string | undefined;
 }
+const { Text } = Typography;
 const Author: React.FC<Props<AuthorProps>> = (props: Props<AuthorProps>) => {
     const { authorData, imgStyle, nameStyle } = props;
     const navigate = useNavigate();
@@ -27,11 +29,13 @@ const Author: React.FC<Props<AuthorProps>> = (props: Props<AuthorProps>) => {
                 onClick={() => navigate('/')}
                 alt="author"
             />
-            <a href={authorData?.authorUrl}>
-                <div className={styles.name} style={nameStyle || undefined}>
-                    {authorData?.name || ''}
-                </div>
-            </a>
+            <Text
+                link={{ href: authorData?.authorUrl }}
+                className={styles.name}
+                style={nameStyle || undefined}
+            >
+                {authorData?.name || ''}
+            </Text>
         </div>
     );
 };

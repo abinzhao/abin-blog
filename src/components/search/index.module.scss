@@ -3,6 +3,15 @@
     overflow-x: hidden;
     padding: 0 10px;
 }
-.itemContent::-webkit-scrollbar{
+.itemContent::-webkit-scrollbar {
     display: none;
+}
+.modalTitle {
+    margin-left: 30px;
+}
+.searchHeader {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 80%;
 }

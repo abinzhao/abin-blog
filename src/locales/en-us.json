@@ -2,7 +2,10 @@
     "locale": "multi-language",
     "theme": "themes",
     "search": "Please enter the article you are searching for",
+    "articleSearch": "Article Search",
     "searchBtn": "Search",
+    "emptyTitle": "Please enter to start search.",
+    "emptySubTitle": "Enter the article you are looking for in the search box above 🔝!",
     "title": "home",
     "content": "I am the home page",
     "home": {

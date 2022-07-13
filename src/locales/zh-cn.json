@@ -3,6 +3,9 @@
     "theme": "主题",
     "search": "请输入您要搜索的文章",
     "searchBtn": "搜索",
+    "articleSearch": "文章搜索",
+    "emptyTitle": "请输入开始搜索",
+    "emptySubTitle": "在上方🔝搜索框中输入您要查询的文章！",
     "title": "首页",
     "content": "我是首页",
     "home": {

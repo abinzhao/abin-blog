@@ -8,7 +8,13 @@ interface Props {
 }
 const Layout: React.FC<Props> = (props: Props) => {
     return (
-        <div className={styles.layout}>
+        <div
+            className={styles.layout}
+            style={{
+                color: 'var(--semi-color-text-0)',
+                backgroundColor: 'var( --semi-color-bg-0)',
+            }}
+        >
             <div className={styles.top}>
                 <Header />
             </div>

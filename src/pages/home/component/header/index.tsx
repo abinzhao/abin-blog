@@ -32,10 +32,10 @@ const Header: React.FC<Props<btnlist>> = (props: Props<btnlist>) => {
                 <div className={styles.subTitle}>{subTitle}</div>
                 <div className={styles.content}>{content}</div>
                 <div style={{ marginTop: width > 1200 ? 52 : 12 }}>
-                    {btnList?.map((item) => (
+                    {btnList?.map((item, i) => (
                         <a
                             className={styles.btnLink}
-                            key={`btn-${item?.icon}`}
+                            key={`header-btn-${item?.icon}-${i}`}
                             href={item?.path}
                         >
                             {iconList[item?.icon]}
@@ -72,10 +72,10 @@ const Header: React.FC<Props<btnlist>> = (props: Props<btnlist>) => {
             <div className={styles.subTitle}>{subTitle}</div>
             <div className={styles.content}>{content}</div>
             <div style={{ marginTop: 12 }}>
-                {btnList?.map((item) => (
+                {btnList?.map((item, i) => (
                     <a
                         className={styles.btnLink}
-                        key={`btn-${item?.icon}`}
+                        key={`header-ls-btn-${item?.icon}-${i}`}
                         href={item?.path}
                     >
                         {iconList[item?.icon]}

@@ -19,6 +19,9 @@
   ul,li{
     list-style-type: none;
   }
+  a{
+    text-decoration: none;
+  }
   input, button, textarea, select {
     font: inherit;
   }

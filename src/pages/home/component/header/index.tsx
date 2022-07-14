@@ -128,7 +128,7 @@ const Header: React.FC<Props<btnlist>> = (props: Props<btnlist>) => {
                     前往掘金
                 </Button>
             </div>
-            <Carousel width={300} height={200} />
+            <Carousel isButton imageList={rightImageList} />
         </div>
     );
 };

@@ -22,7 +22,13 @@ export const config = {
                 { icon: 'github', path: 'ws' },
             ],
             rightImage: undefined,
-            rightImageList: ['1', '2'],
+            rightImageList: [
+                'https://img0.baidu.com/it/u=3993901385,893039060&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500',
+                'https://img2.baidu.com/it/u=2566230917,2808117782&fm=253&fmt=auto&app=120&f=JPEG?w=889&h=500',
+                'https://img2.baidu.com/it/u=2566230917,2808117782&fm=253&fmt=auto&app=120&f=JPEG?w=889&h=500',
+                'https://img0.baidu.com/it/u=3993901385,893039060&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500',
+                'https://img2.baidu.com/it/u=2566230917,2808117782&fm=253&fmt=auto&app=120&f=JPEG?w=889&h=500',
+            ],
         },
         footer: [
             'Copyright © 2012 艺小昔个人博客 | | Theme By Specs',

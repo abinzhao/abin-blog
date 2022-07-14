@@ -10,7 +10,7 @@ interface Props {
     /**
      * 是否显示左有切换按钮
      */
-    isButton?: string;
+    isButton?: boolean;
     /**
      * 是否显示左有切换按钮
      */

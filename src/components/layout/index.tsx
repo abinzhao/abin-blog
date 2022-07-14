@@ -2,6 +2,7 @@ import React, { ReactNode, useState } from 'react';
 import Footer from './footer';
 import Header from './header';
 import styles from './index.module.scss';
+import { BackTop } from '@douyinfe/semi-ui';
 
 interface Props {
     children?: ReactNode;
@@ -34,6 +35,7 @@ const Layout: React.FC<Props> = (props: Props) => {
             </div>
             <div id="center" className={styles.center}>
                 {props?.children}
+                <BackTop />
             </div>
             <div className={styles.footer}>
                 <Footer />

@@ -12,6 +12,18 @@ export const config = {
             { label: '首页', icon: 'home', path: '/' },
             { label: 'home', icon: 'blog', path: '/home' },
         ],
+        home: {
+            title: '小王同学',
+            subTitle:
+                '做事有始有终值得开始的事就值得完成。聪明人做事总是有始有终!把意念深潜得下，何理不可得，把志气奋发起，何事不可做。',
+            content: '前端工程师',
+            btnList: [
+                { icon: 'home', path: 'ws' },
+                { icon: 'github', path: 'ws' },
+            ],
+            rightImage: undefined,
+            rightImageList: ['1', '2'],
+        },
         footer: [
             'Copyright © 2012 艺小昔个人博客 | | Theme By Specs',
             '网站备案号：苏ICP备13026333号-1',

@@ -1,23 +1,48 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // import { useParams, useSearchParams, useLocation } from 'react-router-dom';
 import styles from './index.module.scss';
 import { useTranslation } from 'react-i18next';
 import { Header } from './component';
+import { useConfig } from '@/utils/configContext';
+import { filterObj } from '@/utils/utils';
+import { Empty } from '@douyinfe/semi-ui';
+import { IllustrationConstructionDark } from '@douyinfe/semi-illustrations';
+import { IllustrationConstruction } from '@douyinfe/semi-illustrations';
 
+interface homeHeader {
+    title: string;
+    subTitle: string;
+    content: string;
+    btnList: any[];
+    rightImage: string | undefined;
+    rightImageList: any[];
+}
+const data = {
+    title: '',
+    subTitle: '',
+    content: '',
+    btnList: [],
+    rightImage: undefined,
+    rightImageList: [],
+};
 const Home = () => {
+    const [homeData, setHomeData] = useState<homeHeader>({ ...data });
     const { t } = useTranslation();
+    const configContent = useConfig();
+    useEffect(() => {
+        setHomeData({
+            title: configContent?.data?.home?.title,
+            subTitle: configContent?.data?.home?.subTitle,
+            content: configContent?.data?.home?.content,
+            btnList: configContent?.data?.home?.btnList,
+            rightImage: configContent?.data?.home?.rightImage,
+            rightImageList: configContent?.data?.home?.rightImageList || [],
+        });
+    }, [configContent]);
 
-    return (
+    return Object.keys(filterObj(homeData))?.length > 0 ? (
         <div className={styles.Home}>
-            <Header
-                title="老忘同学"
-                subTitle="做事有始有终值得开始的事就值得完成。聪明人做事总是有始有终!把意念深潜得下，何理不可得，把志气奋发起，何事不可做。"
-                content="前端工程师"
-                btnList={[
-                    { icon: 'home', path: 'ws' },
-                    { icon: 'github', path: 'ws' },
-                ]}
-            />
+            <Header {...homeData} />
             <div className="animate__animated animate__fadeInTopLeft">
                 Home/首页
             </div>
@@ -27,6 +52,23 @@ const Home = () => {
             多语言
             <div>{t('title')}</div>
             <div>{t('content')}</div>
+        </div>
+    ) : (
+        <div className={styles.emptyStyle}>
+            <Empty
+                image={
+                    <IllustrationConstruction
+                        style={{ width: 150, height: 150 }}
+                    />
+                }
+                darkModeImage={
+                    <IllustrationConstructionDark
+                        style={{ width: 150, height: 150 }}
+                    />
+                }
+                description={'正在加载中...'}
+                style={{ padding: 30 }}
+            />
         </div>
     );
 };

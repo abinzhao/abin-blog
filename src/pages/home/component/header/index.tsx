@@ -13,17 +13,27 @@ interface Props<P> {
     title: string;
     subTitle: string;
     content?: string;
+    rightImage?: string | undefined;
+    rightImageList?: any[];
 }
 interface btnlist {
     icon: string;
     path: string;
 }
 const Header: React.FC<Props<btnlist>> = (props: Props<btnlist>) => {
-    const { btnList = [], title = '', subTitle = '', content = '' } = props;
+    const {
+        btnList = [],
+        title = '',
+        subTitle = '',
+        content = '',
+        rightImage = undefined,
+        rightImageList = [],
+    } = props;
     const { width } = useViewport();
     const { t } = useTranslation();
     const navigate = useNavigate();
     const defWidth = 620;
+    console.log('Props', { ...props });
     return width > defWidth ? (
         <div className={styles.header}>
             <div className={styles.left}>
@@ -35,40 +45,50 @@ const Header: React.FC<Props<btnlist>> = (props: Props<btnlist>) => {
                 <div className={styles.content}>{content}</div>
                 <div
                     style={{
-                        marginTop: width > 1200 ? 52 : 12,
                         display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        flexDirection: 'column',
                     }}
                 >
-                    {btnList?.map((item, i) => (
-                        <div
-                            key={`header-btn-${item?.icon}-${i}`}
-                            onClick={() => navigate(item?.path)}
-                            style={{
-                                marginRight: i == btnList?.length - 1 ? 0 : 12,
-                                color: '#0077fa',
-                            }}
-                        >
-                            {iconList[item?.icon]}
-                        </div>
-                    ))}
-                </div>
-                <div style={{ marginTop: width > 1200 ? 52 : 12 }}>
-                    <Button
-                        icon={<IconGithubLogo />}
-                        theme="solid"
-                        style={{ marginRight: 24 }}
+                    <div
+                        style={{
+                            marginTop: width > 1200 ? 52 : 12,
+                            display: 'flex',
+                        }}
                     >
-                        前往GitHub
-                    </Button>
-                    <Button icon={<IconSidebar />} theme="solid">
-                        前往掘金
-                    </Button>
+                        {btnList?.map((item, i) => (
+                            <div
+                                key={`header-btn-${item?.icon}-${i}`}
+                                onClick={() => navigate(item?.path)}
+                                style={{
+                                    marginRight:
+                                        i == btnList?.length - 1 ? 0 : 24,
+                                    color: '#0077fa',
+                                }}
+                            >
+                                {iconList[item?.icon]}
+                            </div>
+                        ))}
+                    </div>
+                    <div style={{ marginTop: width > 1200 ? 52 : 12 }}>
+                        <Button
+                            icon={<IconGithubLogo />}
+                            theme="solid"
+                            style={{ marginRight: 24 }}
+                        >
+                            GitHub
+                        </Button>
+                        <Button icon={<IconSidebar />} theme="solid">
+                            掘&nbsp;&nbsp;&nbsp;&nbsp;金
+                        </Button>
+                    </div>
                 </div>
             </div>
             <div className={styles.right}>
                 <img
                     className={styles.leftImage}
-                    src={HomeImage}
+                    src={rightImage || HomeImage}
                     alt="Home Header LOGO"
                 />
             </div>

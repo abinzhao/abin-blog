@@ -8,6 +8,7 @@ import { filterObj } from '@/utils/utils';
 import { Empty } from '@douyinfe/semi-ui';
 import { IllustrationConstructionDark } from '@douyinfe/semi-illustrations';
 import { IllustrationConstruction } from '@douyinfe/semi-illustrations';
+import Content from './component/content';
 
 interface homeHeader {
     title: string;
@@ -49,6 +50,12 @@ const Home = () => {
     return Object.keys(filterObj(homeData))?.length > 0 ? (
         <div className={styles.Home}>
             <Header {...homeData} />
+            <div
+                className={styles.content}
+                style={{ backgroundColor: 'var(--semi-color-fill-0)' }}
+            >
+                <Content />
+            </div>
             <div className="animate__animated animate__fadeInTopLeft">
                 Home/首页
             </div>

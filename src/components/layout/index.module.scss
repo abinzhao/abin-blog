@@ -13,6 +13,7 @@
     padding: 0 16px;
     line-height: 72px;
     position: fixed;
+    z-index: 9999;
 }
 .headerBg {
     @include themeify {
@@ -31,10 +32,9 @@
 .center {
     box-sizing: border-box;
     margin-top: 60px;
-    padding: 0 16px;
-    width: 100%;
     flex: 1;
     min-height: calc(100vh - 152px);
+    max-width: calc(100vw - 32px);
 }
 .footer {
     width: 100%;

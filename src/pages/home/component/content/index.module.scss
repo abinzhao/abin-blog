@@ -1,0 +1,50 @@
+.content {
+    width: 90%;
+    margin: 0 auto;
+    color: var(--semi-color-text-1);
+}
+.cardLeft {
+    position: relative;
+    width: 100%;
+}
+.leftTop {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background-image: url('https://img2.baidu.com/it/u=2566230917,2808117782&fm=253&fmt=auto&app=120&f=JPEG?w=889&h=500');
+    background-size: cover;
+}
+.leftTopAuthor {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    position: absolute;
+    left: calc(50% - 24px);
+    top: calc(100% - 24px);
+    background-color: antiquewhite;
+}
+.nameStyle {
+    text-align: center;
+    margin: 42px 0;
+}
+.name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.sub {
+    font-size: 16px;
+}
+.leftButtom {
+    // min-height: 200px;
+    margin-left: 15%;
+}
+
+.contentLS {
+    width: 90%;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

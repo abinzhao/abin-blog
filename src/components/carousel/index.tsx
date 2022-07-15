@@ -17,12 +17,12 @@ const Carousel = (props: Props) => {
                 speed={1000}
                 animation="fade"
                 theme="dark"
-                autoPlay={false}
+                autoPlay
             >
-                {imgList?.map((src) => {
+                {imgList?.map((src, i) => {
                     return (
                         <div
-                            key={src}
+                            key={src + i}
                             style={{
                                 backgroundSize: 'cover',
                                 backgroundImage: `url(${src})`,

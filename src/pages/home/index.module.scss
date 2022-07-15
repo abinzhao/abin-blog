@@ -1,9 +1,15 @@
 .Home {
-    width: 100%;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
 }
 .emptyStyle {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.content {
+    width: 100vw;
+    padding: 24px;
 }

@@ -15,7 +15,7 @@ interface Props<P> {
     subTitle: string;
     content?: string;
     rightImage?: string | undefined;
-    rightImageList?: any[];
+    rightImageList?: string[];
 }
 interface btnlist {
     icon: string;
@@ -128,7 +128,7 @@ const Header: React.FC<Props<btnlist>> = (props: Props<btnlist>) => {
                     前往掘金
                 </Button>
             </div>
-            <Carousel isButton imageList={rightImageList} />
+            <Carousel imgList={rightImageList} />
         </div>
     );
 };

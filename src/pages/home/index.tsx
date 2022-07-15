@@ -15,7 +15,9 @@ interface homeHeader {
     content: string;
     btnList: any[];
     rightImage: string | undefined;
-    rightImageList: any[];
+    rightImageList: string[];
+    textList: string[];
+    imageLogo: string;
 }
 const data = {
     title: '',
@@ -24,6 +26,8 @@ const data = {
     btnList: [],
     rightImage: undefined,
     rightImageList: [],
+    textList: [],
+    imageLogo: '',
 };
 const Home = () => {
     const [homeData, setHomeData] = useState<homeHeader>({ ...data });
@@ -37,6 +41,8 @@ const Home = () => {
             btnList: configContent?.data?.home?.btnList,
             rightImage: configContent?.data?.home?.rightImage,
             rightImageList: configContent?.data?.home?.rightImageList || [],
+            textList: configContent?.data?.home?.textList || [],
+            imageLogo: configContent?.data?.home?.imageLogo || '',
         });
     }, [configContent]);
 

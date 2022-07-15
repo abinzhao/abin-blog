@@ -29,6 +29,19 @@ export const config = {
                 'https://img0.baidu.com/it/u=3993901385,893039060&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500',
                 'https://img2.baidu.com/it/u=2566230917,2808117782&fm=253&fmt=auto&app=120&f=JPEG?w=889&h=500',
             ],
+            textList: [
+                [
+                    'Semi 设计管理系统',
+                    '从 Semi Design，到 Any Design,快速定制你的设计系统，并应用在设计稿和代码中,快速定制你的设计系统，并应用在设计稿和代码中',
+                ],
+                [
+                    'Semi 物料市场',
+                    '面向业务场景的定制化组件，支持线上预览和调试',
+                ],
+                ['Semi Pro (开发中)', '基于 40+ 真实组件代码设计'],
+            ],
+            imageLogo:
+                'https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/semi_logo.svg',
         },
         footer: [
             'Copyright © 2012 艺小昔个人博客 | | Theme By Specs',

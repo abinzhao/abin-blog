@@ -1,3 +1,5 @@
 import Header from './header';
+import Content from './content';
+import WZItem from './item';
 
-export { Header };
+export { Header, Content, WZItem };

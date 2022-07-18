@@ -7,7 +7,6 @@ const articleRes = Mock.mock(
     '/api/abin/blog/search',
     'post',
     (options: any) => {
-        console.log('options.body', options.body);
         return article;
     },
 );

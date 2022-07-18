@@ -9,6 +9,7 @@ import { Empty } from '@douyinfe/semi-ui';
 import { IllustrationConstructionDark } from '@douyinfe/semi-illustrations';
 import { IllustrationConstruction } from '@douyinfe/semi-illustrations';
 import Content from './component/content';
+import { useViewport } from '@/utils/viewportContext';
 
 interface homeHeader {
     title: string;
@@ -34,6 +35,8 @@ const Home = () => {
     const [homeData, setHomeData] = useState<homeHeader>({ ...data });
     const { t } = useTranslation();
     const configContent = useConfig();
+    const { width } = useViewport();
+    const defWidth = 620;
     useEffect(() => {
         setHomeData({
             title: configContent?.data?.home?.title,
@@ -51,38 +54,29 @@ const Home = () => {
         <div className={styles.Home}>
             <Header {...homeData} />
             <div
-                className={styles.content}
-                style={{ backgroundColor: 'var(--semi-color-fill-0)' }}
+                className={`${styles.content} animate__animated animate__zoomIn`}
+                style={{
+                    backgroundColor: 'var(--semi-color-fill-0)',
+                    padding: width > defWidth ? 24 : 0,
+                }}
             >
                 <Content />
             </div>
-            <div className="animate__animated animate__fadeInTopLeft">
-                Home/首页
-            </div>
-            <h1 className="animate__animated animate__backInUp">
-                An animated element
-            </h1>
-            多语言
-            <div>{t('title')}</div>
-            <div>{t('content')}</div>
         </div>
     ) : (
-        <div className={styles.emptyStyle}>
-            <Empty
-                image={
-                    <IllustrationConstruction
-                        style={{ width: 150, height: 150 }}
-                    />
-                }
-                darkModeImage={
-                    <IllustrationConstructionDark
-                        style={{ width: 150, height: 150 }}
-                    />
-                }
-                description={'正在加载中...'}
-                style={{ padding: 30 }}
-            />
-        </div>
+        <Empty
+            style={{ marginTop: 150 }}
+            image={
+                <IllustrationConstruction style={{ width: 150, height: 150 }} />
+            }
+            darkModeImage={
+                <IllustrationConstructionDark
+                    style={{ width: 150, height: 150 }}
+                />
+            }
+            title={'正在加载中'}
+            description={'正在马不停蹄的为您从数据库偷数据...'}
+        />
     );
 };
 

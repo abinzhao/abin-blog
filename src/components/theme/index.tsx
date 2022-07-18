@@ -15,7 +15,6 @@ const Theme: React.FC<Props> = (props: Props) => {
         Cookies.get('theme') || 'default',
     );
     const changeTheme = (): void => {
-        console.log('Cookies', Cookies.get('theme'));
         if (Cookies.get('theme') == 'theme-mode') {
             Cookies.set('theme', 'dark');
             setThemeData('dark');

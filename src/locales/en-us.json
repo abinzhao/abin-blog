@@ -6,8 +6,9 @@
     "searchBtn": "Search",
     "emptyTitle": "Please enter to start search.",
     "emptySubTitle": "Enter the article you are looking for in the search box above 🔝!",
-    "title": "home",
-    "content": "I am the home page",
+    "newWZ": "latest articles",
+    "Copyright": "Copyright",
+    "recordNumber": "record Number",
     "home": {
         "header": {
             "title": "Hello! I am"

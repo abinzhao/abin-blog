@@ -3,10 +3,22 @@ import Footer from './footer';
 import Header from './header';
 import styles from './index.module.scss';
 import { BackTop } from '@douyinfe/semi-ui';
+import { IconArrowUp } from '@douyinfe/semi-icons';
 
 interface Props {
     children?: ReactNode;
 }
+const styleTop = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 30,
+    width: 30,
+    borderRadius: '50%',
+    backgroundColor: '#0077fa',
+    color: '#fff',
+    bottom: 100,
+};
 
 const Layout: React.FC<Props> = (props: Props) => {
     const [scrollTop, setScrollTop] = useState<any>(0);
@@ -35,7 +47,9 @@ const Layout: React.FC<Props> = (props: Props) => {
             </div>
             <div id="center" className={styles.center}>
                 {props?.children}
-                <BackTop />
+                <BackTop style={styleTop}>
+                    <IconArrowUp />
+                </BackTop>
             </div>
             <div className={styles.footer}>
                 <Footer />

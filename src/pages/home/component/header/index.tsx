@@ -34,16 +34,25 @@ const Header: React.FC<Props<btnlist>> = (props: Props<btnlist>) => {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const defWidth = 620;
-    console.log('Props', { ...props });
     return width > defWidth ? (
         <div className={styles.header}>
             <div className={styles.left}>
-                <div className={styles.title}>
+                <div
+                    className={`${styles.title} animate__animated animate__rotateIn`}
+                >
                     {t('home.header.title')}
                     <span className={styles.name}>{title}</span>
                 </div>
-                <div className={styles.subTitle}>{subTitle}</div>
-                <div className={styles.content}>{content}</div>
+                <div
+                    className={`${styles.subTitle} animate__animated animate__flipInY`}
+                >
+                    {subTitle}
+                </div>
+                <div
+                    className={`${styles.content} animate__animated animate__jackInTheBox`}
+                >
+                    {content}
+                </div>
                 <div
                     style={{
                         display: 'flex',
@@ -57,6 +66,7 @@ const Header: React.FC<Props<btnlist>> = (props: Props<btnlist>) => {
                             marginTop: width > 1200 ? 52 : 12,
                             display: 'flex',
                         }}
+                        className="animate__animated animate__fadeInUp"
                     >
                         {btnList?.map((item, i) => (
                             <div
@@ -72,7 +82,10 @@ const Header: React.FC<Props<btnlist>> = (props: Props<btnlist>) => {
                             </div>
                         ))}
                     </div>
-                    <div style={{ marginTop: width > 1200 ? 52 : 12 }}>
+                    <div
+                        className="animate__animated animate__zoomInLeft"
+                        style={{ marginTop: width > 1200 ? 52 : 12 }}
+                    >
                         <Button
                             icon={<IconGithubLogo />}
                             theme="solid"
@@ -86,7 +99,9 @@ const Header: React.FC<Props<btnlist>> = (props: Props<btnlist>) => {
                     </div>
                 </div>
             </div>
-            <div className={styles.right}>
+            <div
+                className={`${styles.right} animate__animated animate__rotateIn`}
+            >
                 <img
                     className={styles.leftImage}
                     src={rightImage || HomeImage}
@@ -96,13 +111,26 @@ const Header: React.FC<Props<btnlist>> = (props: Props<btnlist>) => {
         </div>
     ) : (
         <div className={styles.headerLS}>
-            <div className={styles.title}>
+            <div
+                className={`${styles.title} animate__animated animate__rotateIn`}
+            >
                 {t('home.header.title')}
                 <span className={styles.name}>{title}</span>
             </div>
-            <div className={styles.subTitle}>{subTitle}</div>
-            <div className={styles.content}>{content}</div>
-            <div style={{ marginTop: 12, display: 'flex' }}>
+            <div
+                className={`${styles.subTitle} animate__animated animate__flipInY`}
+            >
+                {subTitle}
+            </div>
+            <div
+                className={`${styles.content} animate__animated animate__jackInTheBox`}
+            >
+                {content}
+            </div>
+            <div
+                className="animate__animated animate__fadeInUp"
+                style={{ marginTop: 12, display: 'flex' }}
+            >
                 {btnList?.map((item, i) => (
                     <div
                         key={`header-btn-ls-${item?.icon}-${i}`}
@@ -116,7 +144,10 @@ const Header: React.FC<Props<btnlist>> = (props: Props<btnlist>) => {
                     </div>
                 ))}
             </div>
-            <div style={{ marginTop: 12 }}>
+            <div
+                className="animate__animated animate__zoomInLeft"
+                style={{ marginTop: 12 }}
+            >
                 <Button
                     icon={<IconGithubLogo />}
                     theme="solid"
@@ -128,7 +159,9 @@ const Header: React.FC<Props<btnlist>> = (props: Props<btnlist>) => {
                     前往掘金
                 </Button>
             </div>
-            <Carousel imgList={rightImageList} />
+            <div className="animate__animated animate__zoomInDown">
+                <Carousel imgList={rightImageList} />
+            </div>
         </div>
     );
 };

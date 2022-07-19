@@ -40,7 +40,7 @@ const Author: React.FC<Props<AuthorProps>> = (props: Props<AuthorProps>) => {
                 </Text>
             ) : (
                 <div className={styles.des}>
-                    <div>
+                    <div style={{ textAlign: 'left' }}>
                         <Text
                             link={{ href: authorData?.authorUrl }}
                             className={styles.name}

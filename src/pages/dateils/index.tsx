@@ -2,15 +2,15 @@ import React from 'react';
 import { useViewport } from '@/utils/viewportContext';
 import { useTranslation } from 'react-i18next';
 import styles from './index.module.scss';
-import { Button, Card, Col, Divider, Row, Space } from '@douyinfe/semi-ui';
+import { Card, Col, Divider, Row, Space, Tag } from '@douyinfe/semi-ui';
 import { Author } from '@/components';
 import { useConfig } from '@/utils/configContext';
 import {
-    IconComment,
-    IconLikeThumb,
+    IconPriceTag,
     IconDesktop,
     IconPhoneStroke,
 } from '@douyinfe/semi-icons';
+import { TagList } from '@/components/tag';
 
 interface aythorProps {
     name: string;
@@ -28,6 +28,7 @@ const Datelis = () => {
         authorImage: configContent?.data?.author_image,
         authorWorks: configContent?.data?.author_works,
     };
+
     const defWidth = 620;
     return width > defWidth ? (
         <div className={styles.detail}>
@@ -35,7 +36,19 @@ const Datelis = () => {
                 <Row gutter={[16, 16]}>
                     <Col span={16}>
                         <Card shadows="hover">
-                            <div className={styles.title}>标题</div>
+                            <div className={styles.contentHeader}>
+                                <div className={styles.title}>
+                                    不要再直接写undefined了
+                                </div>
+                                <div className={styles.nameTitle}>
+                                    2022-7-19 星期二
+                                </div>
+                                <div className={styles.headerTag}>
+                                    <IconPriceTag style={{ marginRight: 12 }} />
+                                    {TagList['JavaScript']}
+                                </div>
+                            </div>
+                            <div className={styles.content}></div>
                         </Card>
                     </Col>
                     <Col span={8}>
@@ -47,7 +60,7 @@ const Datelis = () => {
                                         isDescription
                                     />
                                     <div className={styles.right}>
-                                        {0 ? (
+                                        {width > defWidth ? (
                                             <IconDesktop />
                                         ) : (
                                             <IconPhoneStroke />
@@ -59,21 +72,8 @@ const Datelis = () => {
                                 </div>
                                 <Divider margin="12px" />
                                 <Space>
-                                    <Button
-                                        icon={<IconLikeThumb />}
-                                        theme="borderless"
-                                        iconSize={'large'}
-                                        type={'primary'}
-                                    >
-                                        获得点赞{123}
-                                    </Button>
-                                    <Button
-                                        icon={<IconComment />}
-                                        theme="borderless"
-                                        type="primary"
-                                    >
-                                        获得评论{456}
-                                    </Button>
+                                    {TagList['qianduan']}
+                                    {TagList['JavaScript']}
                                 </Space>
                             </div>
                         </Card>
@@ -93,7 +93,11 @@ const Datelis = () => {
                             <div className={styles.header}>
                                 <Author authorData={authorData} isDescription />
                                 <div className={styles.right}>
-                                    {0 ? <IconDesktop /> : <IconPhoneStroke />}
+                                    {width > defWidth ? (
+                                        <IconDesktop />
+                                    ) : (
+                                        <IconPhoneStroke />
+                                    )}
                                     <span style={{ marginLeft: 12 }}>
                                         IP属地:深圳
                                     </span>
@@ -101,21 +105,12 @@ const Datelis = () => {
                             </div>
                             <Divider margin="12px" />
                             <Space>
-                                <Button
-                                    icon={<IconLikeThumb />}
-                                    theme="borderless"
-                                    iconSize={'large'}
-                                    type={'primary'}
-                                >
-                                    获得点赞{123}
-                                </Button>
-                                <Button
-                                    icon={<IconComment />}
-                                    theme="borderless"
-                                    type="primary"
-                                >
-                                    获得评论{456}
-                                </Button>
+                                <Tag color="blue" type="solid">
+                                    前端
+                                </Tag>
+                                <Tag color={'cyan'} type="solid">
+                                    JavaScript
+                                </Tag>
                             </Space>
                         </div>
                     </div>

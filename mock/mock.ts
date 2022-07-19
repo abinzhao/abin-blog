@@ -47,7 +47,7 @@ export const config = {
         },
         footer: {
             copyright: 2022,
-            title: '阿斌的个人博客',
+            title: '阿斌的个人笔记',
             recordNumber: '苏ICP备13026333号-1',
             devName: 'Abin',
         },

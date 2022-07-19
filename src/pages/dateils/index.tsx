@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useViewport } from '@/utils/viewportContext';
-import { useTranslation } from 'react-i18next';
 import styles from './index.module.scss';
-import { Card, Col, Divider, Row, Space, Tag } from '@douyinfe/semi-ui';
+import { Card, Col, Divider, Row, Space } from '@douyinfe/semi-ui';
 import { Author } from '@/components';
 import { useConfig } from '@/utils/configContext';
 import {
@@ -11,6 +10,10 @@ import {
     IconPhoneStroke,
 } from '@douyinfe/semi-icons';
 import { TagList } from '@/components/tag';
+import Markdown from 'react-markdown';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { solarizedlight as codeStyle } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { DetailsReq } from '@/service';
 
 interface aythorProps {
     name: string;
@@ -20,8 +23,8 @@ interface aythorProps {
 }
 const Datelis = () => {
     const { width } = useViewport();
-    const { t } = useTranslation();
     const configContent = useConfig();
+    const [detail, setDetail] = useState<any>({});
     const authorData: aythorProps = {
         name: configContent?.data?.name,
         authorUrl: configContent?.data?.author_url,
@@ -29,7 +32,24 @@ const Datelis = () => {
         authorWorks: configContent?.data?.author_works,
     };
 
+    const CodeBlock = ({ language, value }: any) => (
+        <SyntaxHighlighter language={language} style={codeStyle}>
+            {value}
+        </SyntaxHighlighter>
+    );
+
     const defWidth = 620;
+    const Details: any = async () => {
+        const res: any = await DetailsReq({ id: 1 });
+        console.log('res', res);
+        setDetail(res?.data?.data);
+        return res?.data?.data;
+    };
+
+    useEffect(() => {
+        Details();
+    }, []);
+
     return width > defWidth ? (
         <div className={styles.detail}>
             <div className={styles.content}>
@@ -38,17 +58,33 @@ const Datelis = () => {
                         <Card shadows="hover">
                             <div className={styles.contentHeader}>
                                 <div className={styles.title}>
-                                    不要再直接写undefined了
+                                    {detail?.title}
                                 </div>
                                 <div className={styles.nameTitle}>
-                                    2022-7-19 星期二
+                                    {detail?.date}
                                 </div>
                                 <div className={styles.headerTag}>
-                                    <IconPriceTag style={{ marginRight: 12 }} />
-                                    {TagList['JavaScript']}
+                                    <IconPriceTag style={{ marginRight: 4 }} />
+                                    {detail?.tag?.map(
+                                        (item: string | number) => (
+                                            <div
+                                                key={item}
+                                                style={{ marginLeft: 12 }}
+                                            >
+                                                {TagList[item]}
+                                            </div>
+                                        ),
+                                    )}
                                 </div>
                             </div>
-                            <div className={styles.content}></div>
+                            <div className={styles.content}>
+                                <Markdown
+                                    // source={'## 12345'}
+                                    renderers={{ code: CodeBlock }}
+                                >
+                                    {detail?.content}
+                                </Markdown>
+                            </div>
                         </Card>
                     </Col>
                     <Col span={8}>
@@ -66,7 +102,7 @@ const Datelis = () => {
                                             <IconPhoneStroke />
                                         )}
                                         <span style={{ marginLeft: 12 }}>
-                                            IP属地:深圳
+                                            IP属地:{detail?.IP}
                                         </span>
                                     </div>
                                 </div>
@@ -90,6 +126,18 @@ const Datelis = () => {
                 <Card shadows="hover">
                     <div className={styles.titleLS}>
                         <div className={styles.author}>
+                            <div className={styles.title}>{detail?.title}</div>
+                            <div className={styles.nameTitle}>
+                                {detail?.date}
+                            </div>
+                            <div className={styles.headerTag}>
+                                <IconPriceTag style={{ marginRight: 4 }} />
+                                {detail?.tag?.map((item: string | number) => (
+                                    <div key={item} style={{ marginLeft: 12 }}>
+                                        {TagList[item]}
+                                    </div>
+                                ))}
+                            </div>
                             <div className={styles.header}>
                                 <Author authorData={authorData} isDescription />
                                 <div className={styles.right}>
@@ -99,20 +147,20 @@ const Datelis = () => {
                                         <IconPhoneStroke />
                                     )}
                                     <span style={{ marginLeft: 12 }}>
-                                        IP属地:深圳
+                                        IP属地:{detail?.IP}
                                     </span>
                                 </div>
                             </div>
                             <Divider margin="12px" />
-                            <Space>
-                                <Tag color="blue" type="solid">
-                                    前端
-                                </Tag>
-                                <Tag color={'cyan'} type="solid">
-                                    JavaScript
-                                </Tag>
-                            </Space>
                         </div>
+                    </div>
+                    <div className={styles.content}>
+                        <Markdown
+                            // source={'## 12345'}
+                            renderers={{ code: CodeBlock }}
+                        >
+                            {detail?.content}
+                        </Markdown>
                     </div>
                 </Card>
             </div>

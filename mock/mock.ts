@@ -107,3 +107,19 @@ export const article = {
         ],
     },
 };
+
+export const details = {
+    status: 200,
+    reset: '0',
+    message: 'success',
+    data: {
+        title: '不要再直接写undefined了',
+        date: '2022年7月19日 星期二',
+        name: 'abin',
+        IP: '深圳',
+        tag: ['qianduan', 'JavaScript'],
+        content: '## 12345\n ***1234***',
+        comment: [],
+        like: 2345,
+    },
+};

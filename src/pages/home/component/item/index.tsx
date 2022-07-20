@@ -57,7 +57,7 @@ const WZItem: React.FC<Props<WZProps>> = (props: Props<WZProps>) => {
             }
             cover={
                 <div onClick={() => navigate(`/detail/${WZData?.id}`)}>
-                    <img alt="example" src={WZData?.image} />
+                    <img alt="example" height={200} src={WZData?.image} />
                 </div>
             }
             footerLine={false}

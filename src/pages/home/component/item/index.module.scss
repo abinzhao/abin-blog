@@ -16,6 +16,17 @@
 .content {
     margin: 12px;
 }
+.imgDivStyle {
+    width: 100%;
+    overflow: hidden;
+}
+.imgStyle {
+    transition: 0.5s;
+}
+.imgStyle:hover {
+    transform: scale(1.2);
+    transition: 0.5s;
+}
 .description {
     display: -webkit-box;
     -webkit-box-orient: vertical;

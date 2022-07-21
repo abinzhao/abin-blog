@@ -36,11 +36,14 @@ const WZItem: React.FC<Props<WZProps>> = (props: Props<WZProps>) => {
 
     return (
         <div className={styles.itemStyle}>
-            <img
-                src={WZData?.image}
-                alt="author"
-                onClick={() => navigate(`/detail/${WZData?.id}`)}
-            />
+            <div className={styles.imgDivStyle}>
+                <img
+                    src={WZData?.image}
+                    className={styles.imgStyle}
+                    alt="author"
+                    onClick={() => navigate(`/detail/${WZData?.id}`)}
+                />
+            </div>
             <div className={styles.content}>
                 <div
                     className={styles.description}

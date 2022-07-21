@@ -16,10 +16,11 @@ export default defineConfig({
         port: 3001,
         proxy: {
             '/api': {
-                target: 'http://127.0.0.1',
+                target: 'https://api.inews.qq.com',
                 changeOrigin: true,
                 cookieDomainRewrite: '',
                 secure: false,
+                rewrite: (path) => path.replace(/^\/api/, ''),
             },
         },
     },

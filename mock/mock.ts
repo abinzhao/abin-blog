@@ -121,5 +121,7 @@ export const details = {
         content: '## 12345\n ***1234***',
         comment: [],
         like: 2345,
+        authorUrl: 'https://github.com/abinzhao',
+        authorWorks: '前端工程师',
     },
 };

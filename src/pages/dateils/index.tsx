@@ -108,8 +108,17 @@ const Datelis = () => {
                                 </div>
                                 <Divider margin="12px" />
                                 <Space>
-                                    {TagList['qianduan']}
-                                    {TagList['JavaScript']}
+                                    <IconPriceTag style={{ marginRight: 4 }} />
+                                    {detail?.tag?.map(
+                                        (item: string | number) => (
+                                            <div
+                                                key={item}
+                                                style={{ marginLeft: 6 }}
+                                            >
+                                                {TagList[item]}
+                                            </div>
+                                        ),
+                                    )}
                                 </Space>
                             </div>
                         </Card>

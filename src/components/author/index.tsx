@@ -10,10 +10,10 @@ interface Props<P> {
     isDescription?: boolean;
 }
 interface AuthorProps {
-    name: string;
-    authorUrl: string;
-    authorImage: string | undefined;
-    authorWorks: string;
+    name?: string;
+    authorUrl?: string;
+    authorImage?: string | undefined;
+    authorWorks?: string;
 }
 const { Text } = Typography;
 const Author: React.FC<Props<AuthorProps>> = (props: Props<AuthorProps>) => {
@@ -50,7 +50,7 @@ const Author: React.FC<Props<AuthorProps>> = (props: Props<AuthorProps>) => {
                         </Text>
                     </div>
                     <div className={styles.nameDes}>
-                        @{authorData?.authorWorks || ''}
+                        {authorData?.authorWorks || ''}
                     </div>
                 </div>
             )}

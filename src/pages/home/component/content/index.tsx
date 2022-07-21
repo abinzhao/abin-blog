@@ -30,6 +30,7 @@ const Content: React.FC = () => {
                         title={'最新文章'}
                         shadows="hover"
                         className={styles.cardLeft}
+                        style={{ borderRadius: 18 }}
                     >
                         <div className={styles.cardLeftContent}>
                             {WZData?.map((item, i) => (

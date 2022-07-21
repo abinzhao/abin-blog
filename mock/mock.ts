@@ -66,8 +66,7 @@ export const article = {
                 title: 'JS的最新用法',
                 image: 'https://img0.baidu.com/it/u=3993901385,893039060&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500',
                 description: ' JS的骚操作，你还知道那些？',
-                comment: 324,
-                like: 1342,
+                tag: ['qianduan', 'JavaScript'],
                 date: '五天前',
             },
             {
@@ -77,8 +76,7 @@ export const article = {
                 title: 'css的最新用法',
                 image: 'https://img0.baidu.com/it/u=3993901385,893039060&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500',
                 description: ' css的骚操作，你还知道那些？',
-                comment: 324,
-                like: 1342,
+                tag: ['qianduan', 'JavaScript'],
                 date: '五天前',
             },
             {
@@ -89,8 +87,7 @@ export const article = {
                 image: 'https://img0.baidu.com/it/u=3993901385,893039060&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500',
                 description:
                     ' Vue的骚操作，你还知道那些？ Vue的骚操作，你还知道那些？ Vue的骚操作，你还知道那些？ Vue的骚操作，你还知道那些？',
-                comment: 324,
-                like: 1342,
+                tag: ['qianduan', 'JavaScript'],
                 date: '五天前',
             },
             {
@@ -100,8 +97,7 @@ export const article = {
                 title: 'React的最新用法',
                 image: 'https://img0.baidu.com/it/u=3993901385,893039060&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500',
                 description: ' React的骚操作，你还知道那些？',
-                comment: 324,
-                like: 1342,
+                tag: ['qianduan', 'JavaScript'],
                 date: '五天前',
             },
         ],

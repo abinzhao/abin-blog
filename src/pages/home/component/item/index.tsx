@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './index.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { Author } from '@/components';
+import { TagList } from '@/components/tag';
+import { IconPriceTag } from '@douyinfe/semi-icons';
 
 interface Props<P> {
     WZData?: P;
@@ -13,9 +15,8 @@ interface WZProps {
     title: string;
     image: string;
     description: string;
-    comment?: number | 0;
-    like?: number | 0;
     date: string;
+    tag: string[];
     authorWorks?: string;
 }
 interface aythorProps {
@@ -46,6 +47,14 @@ const WZItem: React.FC<Props<WZProps>> = (props: Props<WZProps>) => {
                 <div className={styles.titleStyle}>
                     <Author authorData={authorData} isDescription />
                     <div className={styles.dateStyle}>{WZData?.date}</div>
+                </div>
+                <div className={styles.tagStyle}>
+                    <IconPriceTag style={{ margin: '12px 6px 0 0' }} />
+                    {WZData?.tag?.map((item: string | number) => (
+                        <div key={item} style={{ margin: '12px 12px 0 0' }}>
+                            {TagList[item]}
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

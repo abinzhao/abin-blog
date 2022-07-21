@@ -5,6 +5,7 @@ import styles from './index.module.scss';
 import { Card, Col, Row } from '@douyinfe/semi-ui';
 import { Article } from '@/service';
 import WZItem from '../item';
+import { XGYQComponent } from '@/components';
 
 const Content: React.FC = () => {
     const [WZData, setWZData] = useState<any[]>([]);
@@ -43,8 +44,12 @@ const Content: React.FC = () => {
                     </Card>
                 </Col>
                 <Col span={8}>
-                    <Card shadows="hover" className={styles.cardRight}>
-                        Card Content
+                    <Card
+                        shadows="hover"
+                        className={styles.cardRight}
+                        style={{ borderRadius: 18 }}
+                    >
+                        <XGYQComponent />
                     </Card>
                 </Col>
             </Row>
@@ -55,6 +60,7 @@ const Content: React.FC = () => {
                 title={t('newWZ')}
                 shadows="hover"
                 className={styles.cardLeft}
+                style={{ borderRadius: 18 }}
             >
                 <div className={styles.cardLeftContent}>
                     {WZData?.map((item, i) => (

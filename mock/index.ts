@@ -4,6 +4,7 @@ import { config, article, details } from './mock';
 // 用mock拦截对应的请求地址，并发送返回数据对象
 const configRes = Mock.mock('/api/abin/blog/config', 'get', config);
 const detailsRes = Mock.mock('/api/abin/blog/detail', 'post', details);
+const JQArticleRes = Mock.mock('/api/abin/blog/JQArticle', 'post', article);
 const articleRes = Mock.mock(
     '/api/abin/blog/search',
     'post',
@@ -16,4 +17,5 @@ export default {
     configRes,
     articleRes,
     detailsRes,
+    JQArticleRes,
 };

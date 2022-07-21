@@ -6,6 +6,7 @@ import { Card, Col, Row } from '@douyinfe/semi-ui';
 import { Article } from '@/service';
 import WZItem from '../item';
 import { XGYQComponent } from '@/components';
+import Announcement from '../announcement';
 
 const Content: React.FC = () => {
     const [WZData, setWZData] = useState<any[]>([]);
@@ -46,8 +47,17 @@ const Content: React.FC = () => {
                 <Col span={8}>
                     <Card
                         shadows="hover"
-                        className={styles.cardRight}
-                        style={{ borderRadius: 18 }}
+                        style={{
+                            borderRadius: 18,
+                            marginBottom: 12,
+                        }}
+                        bodyStyle={{ padding: 0 }}
+                    >
+                        <Announcement />
+                    </Card>
+                    <Card
+                        shadows="hover"
+                        style={{ borderRadius: 18, marginBottom: 12 }}
                     >
                         <XGYQComponent />
                     </Card>

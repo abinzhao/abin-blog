@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useViewport } from '@/utils/viewportContext';
 import styles from './index.module.scss';
-import { Card, Col, Divider, Row, Space } from '@douyinfe/semi-ui';
+import {
+    Avatar,
+    Card,
+    Col,
+    Divider,
+    List,
+    Row,
+    Space,
+} from '@douyinfe/semi-ui';
 import { Author } from '@/components';
 import { useConfig } from '@/utils/configContext';
 import {
@@ -13,7 +21,9 @@ import { TagList } from '@/components/tag';
 import Markdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { solarizedlight as codeStyle } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import { DetailsReq } from '@/service';
+import { DetailsReq, JQArticle } from '@/service';
+import { useNavigate } from 'react-router-dom';
+import { IconFile } from '@douyinfe/semi-icons';
 
 interface aythorProps {
     name: string;
@@ -23,8 +33,10 @@ interface aythorProps {
 }
 const Datelis = () => {
     const { width } = useViewport();
+    const navigate = useNavigate();
     const configContent = useConfig();
     const [detail, setDetail] = useState<any>({});
+    const [JQWZList, setJQWZList] = useState<any[]>([]);
     const authorData: aythorProps = {
         name: configContent?.data?.name,
         authorUrl: configContent?.data?.author_url,
@@ -41,13 +53,19 @@ const Datelis = () => {
     const defWidth = 620;
     const Details: any = async () => {
         const res: any = await DetailsReq({ id: 1 });
-        console.log('res', res);
         setDetail(res?.data?.data);
         return res?.data?.data;
+    };
+    // JQArticle
+    const JQArticleList: any = async () => {
+        const res: any = await JQArticle({});
+        setJQWZList(res?.data?.data?.list || []);
+        return res?.data?.data?.list || [];
     };
 
     useEffect(() => {
         Details();
+        JQArticleList();
     }, []);
 
     return width > defWidth ? (
@@ -124,6 +142,41 @@ const Datelis = () => {
                         </Card>
                         <Card shadows="hover">
                             <div className={styles.title}>近期文章</div>
+                            <div className={styles.listStyle}>
+                                <List
+                                    dataSource={JQWZList}
+                                    renderItem={(item) => (
+                                        <List.Item
+                                            header={
+                                                <Avatar src={item?.author} />
+                                            }
+                                            main={
+                                                <div>
+                                                    <span
+                                                        style={{
+                                                            color: 'var(--semi-color-text-0)',
+                                                            fontWeight: 500,
+                                                        }}
+                                                    >
+                                                        {item?.title}
+                                                    </span>
+                                                    <p
+                                                        style={{
+                                                            color: 'var(--semi-color-text-2)',
+                                                            margin: '4px 0',
+                                                        }}
+                                                        className={
+                                                            styles.desText
+                                                        }
+                                                    >
+                                                        {item?.description}
+                                                    </p>
+                                                </div>
+                                            }
+                                        />
+                                    )}
+                                />
+                            </div>
                         </Card>
                     </Col>
                 </Row>
